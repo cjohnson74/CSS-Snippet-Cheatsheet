@@ -4,6 +4,10 @@
     align-items: center;
 }
 
+title {
+    display: none;
+}
+
 :root {
     --dark-grey: rgb(51, 57, 64);
     --light-pink: rgb(232, 103, 237);
@@ -41,10 +45,13 @@ h3,
     font-family: Arial, Helvetica, sans-serif;
 }
 
+h3 {
+    margin: 0;
+}
+
 header p {
     text-align: center;
-    width:75%;
-    padding-bottom: 30px;
+    width:96%;
     color: white;
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -53,16 +60,15 @@ header p {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    align-items: stretch;
+    align-items: center;
+    line-height: 2rem;
 }
 
 .row {
     display: flex;
-    flex-direction: row;
-    margin-left: -1.5rem;
-    margin-right: -1.5rem;
-    align-items: stretch;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     flex-grow: 1;
 }
 
@@ -70,32 +76,41 @@ header p {
     display: flex;
     flex-direction: column;
     justify-content:flex-start;
-    margin: 2rem;
-    min-height: 100%;
+    margin: 1.5rem .5rem 1.5rem .5rem;
     border: 2px dashed white;
     text-align: left;
-    width: 100%
+    width: 100%;
+    align-items: left;
 }
 
 .FChild h2 {
-    display:flex;
+    display: flex;
     text-align: left;
     border: 2px solid white;
     border-radius: 7px;
-    width: 90%;
-    margin: -25px 20px 0px 20px;
+    width: 85%;
+    position: relative;
+    margin-top: -30px;
+    padding-left: 20px;
     background-color: var(--dark-grey);
-    line-height: 30px;
-    align-items: center;
-    flex-wrap: wrap;
+    line-height: 40px;
+    align-items: flex-start;
 }
 
 .FChild p {
     margin-bottom: 0;
+    margin-left: 1rem;
+    margin-top: 0;
 }
 
 code {
     flex-grow: 1;
+    font-family: Consolas, 'Andale Mono WT', 'Andale Mono', 'Lucida Console',
+    'Lucida Sans Typewriter', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono',
+    'Liberation Mono', 'Nimbus Mono L', Monaco, 'Courier New', Courier,
+    monospace;
+    justify-content: center;
+    padding: .5rem;
 }
 
 .language-css {
@@ -106,15 +121,55 @@ code {
     width: 95%;
     height: 100%;
     background-image: linear-gradient(rgba(232, 102, 236, 0.3) 0%, rgba(232, 102, 236, 0.6) 100%);
-    justify-content: left;
     font-size: 18px;
     border-radius: 8px;
     color: white;
     align-items: flex-start;
 }
 
+/*on <pre> click, select all contents so the code is highlighted */
+.language-css:active {
+    user-select: all;
+}
+
+/* set an outer and inner drop shadow on the card to create a glowing effect on hover */
+.FChild:hover,
+.FChild:hover h2,
+.FChild:hover .language-css {
+    box-shadow: inset 0px 0px 8px rgb(232, 103, 237), 0 0 15px rgb(232, 103, 237);
+}
+
 footer {
     padding-bottom: 30px;
     font-size: 20px;
     text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+    .FBox {
+        flex-wrap: wrap;
+    }
+    .row {
+        flex-wrap: wrap;
+        flex-direction: row;
+        align-items: stretch;
+    }
+    .FChild {
+        width: 45%;
+        justify-content: left;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .FBox {
+        flex-wrap: wrap;
+    }
+    .row {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .FChild {
+        width: 30%;
+        justify-content: left;
+    }
 }
